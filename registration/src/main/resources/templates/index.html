@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Books</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Books</h2>
+            <a th:href="@{/add_book}" class="btn btn-primary mb-3">Add Book</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Dummy data for books (you can replace this with data fetched from a backend) -->
+                <tr th:each="lists : ${list}">
+                    <td th:text="${lists.name}"></td>
+                    <td th:text="${lists.author}"></td>
+                    <td th:text="${lists.price}"></td>
+                    <td>
+                        <a th:href="@{/edit(id=${lists.id})}" class="btn btn-primary btn-sm">Edit</a>
+                        <a th:href="@{/delete(id=${lists.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional, only required if you need JavaScript for other functionalities) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
